@@ -9,17 +9,34 @@ Extra challenge:
 
 ---
 
-## Goal
+# Goal
 
-Check whether all characters in a string are unique.
+Check whether every character in a string appears only once.
 
 ---
 
+# Key Insight
+
+The core of this problem is detecting duplicate characters efficiently.
+
+A brute force solution compares every character against the others, while optimized approaches use additional data structures to reduce lookup time.
+
+This problem is also a great introduction to the trade-off between:
+- time complexity
+- space complexity
+
+---
+
+# Approaches
+
 ## Solution 1 — Brute Force
 
-### Approach
+### Idea
 
 Compare each character with every following character in the string.
+
+If two equal characters are found:
+- the string is not unique.
 
 ### Complexity
 
@@ -28,23 +45,25 @@ Compare each character with every following character in the string.
 
 ### Advantages
 
-- Does not require additional data structures.
-- Simple and straightforward.
+- Does not require additional memory.
+- Simple and easy to understand.
+- Satisfies the book's extra challenge.
 
 ### Disadvantages
 
-- Inefficient for large strings.
+- Inefficient for large inputs.
+- Performs many repeated comparisons.
 
 ---
 
 ## Solution 2 — HashSet
 
-### Approach
+### Idea
 
 Store already seen characters in a HashSet.
 
 If a character already exists in the set:
-- the string does not contain unique characters.
+- the string contains duplicates.
 
 ### Complexity
 
@@ -55,30 +74,58 @@ If a character already exists in the set:
 
 - Much faster lookup.
 - Cleaner and more scalable solution.
+- Avoids unnecessary comparisons.
 
 ### Disadvantages
 
 - Requires additional memory.
+- Does not satisfy the "no additional data structures" constraint.
 
 ---
 
-## Key Learnings
+# Trade-offs
+
+| Approach | Time | Space | Notes |
+|---|---|---|---|
+| Brute Force | O(n²) | O(1) | No extra memory required |
+| HashSet | O(n) | O(n) | Faster lookup using additional memory |
+
+---
+
+# Key Learnings
 
 - Trade-offs between time and space complexity.
-- Using HashSet for O(1) average lookup.
-- Early return to avoid unnecessary processing.
-- Difference between brute force and optimized approaches.
+- Difference between brute force and optimized solutions.
+- Using HashSet for constant-time average lookup.
+- Importance of early return to avoid unnecessary processing.
+- How additional data structures can improve performance.
 
 ---
 
-## Project Structure
+# Implementations
+
+## C#
 
 ```txt
 csharp/
 ├── SolutionBruteForce.cs
 └── SolutionHashSet.cs
+```
 
+## Java
+
+```txt
 java/
 ├── SolutionBruteForce.java
 └── SolutionHashSet.java
 ```
+
+---
+
+# Related Concepts
+
+- Hash Tables
+- Nested Loops
+- Complexity Analysis
+- Early Return
+- Space-Time Trade-off
